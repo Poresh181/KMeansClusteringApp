@@ -12,4 +12,17 @@ st.subheader("Data Science With Poresh")
 #Sidebar
 
 st.sidebar.header("Upload CSV Data or Use Sample")
-st.sidebar.checkbox("Use Example Dataset")
+use_example = st.sidebar.checkbox("Use Example Dataset")
+
+#Load Data
+
+if use_example:
+  df = sns.load_dataset('IRIS')
+  df = df.dropna()
+  st.success("Loaded sample dataset:'IRIS'")
+else:
+  uploaded_file = st.sidebar.file_uploader("Upload Your CSV File", type = ['csv'])
+  if uploaded_file:
+    df = pd.read_csv(uploaded_file)
+    st.warning("Please upload your csv file or use the sample dataset")
+    st.stop()
