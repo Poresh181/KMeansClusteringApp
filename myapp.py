@@ -34,3 +34,12 @@ else:
 
 st.subheader("Dataset Preview")
 st.write(df.head())
+
+st.subheader("Data Preprocessing")
+numeric_cols = df.select_dtypes(include = np.number).columns.tolist()
+
+if len(numeric_cols) < 2:
+  st.error("Need atleast two numeric columns for clustering")
+  st.stop()
+
+features = st.multiselect("Select feature columns for clustering", numeric_cols)
