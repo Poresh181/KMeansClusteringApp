@@ -17,7 +17,7 @@ use_example = st.sidebar.checkbox("Use Example Dataset")
 #Load Data
 
 if use_example:
-  df = sns.load_dataset('IRIS')
+  df = sns.load_dataset('iris')
   df = df.dropna()
   st.success("Loaded sample dataset:'IRIS'")
 else:
