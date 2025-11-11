@@ -42,4 +42,4 @@ if len(numeric_cols) < 2:
   st.error("Need atleast two numeric columns for clustering")
   st.stop()
 
-features = st.multiselect("Select feature columns for clustering", numeric_cols)
+features = st.multiselect("Select feature columns for clustering", numeric_cols, default=numeric_cols)
