@@ -47,3 +47,28 @@ features = st.multiselect("Select feature columns for clustering", numeric_cols,
 if len(features) == 0:
   st.write("Please select atleast one feature")
   st.stop()
+
+
+#Drop missing values
+
+df = df[features].dropna()
+
+#Elbow method
+
+st.subheader("Find optimal number of clusters(Elbow method)")
+
+max_k = st.slider("Maximum number of clusters to test", min_value =2, max_value = 10, step = 1)
+wcss = []
+
+for k in range(1, max_k+1):
+  kmeans = KMeans(n_clusters = k, random_state = 42)
+  kmeans.fit(df)
+  wcss.append(kmeans.inertia_)
+
+
+fig_elbow, ax_elbow = plt.subplots()
+ax_elbow.plot(range(1, max_k+1), wcss, marker = '0')
+ax_elbow.set_xlabel('Number of Clusters(k)')
+ax_elbow.set_ylabel('WCSS (intertial)')
+ax_elbow.set_title("Elbow Method For Optimal k")
+st.pyplot(fig_elbow)
