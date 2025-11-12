@@ -67,7 +67,7 @@ for k in range(1, max_k+1):
 
 
 fig_elbow, ax_elbow = plt.subplots()
-ax_elbow.plot(range(1, max_k+1), wcss, marker = '0')
+ax_elbow.plot(range(1, max_k+1), wcss, marker = 'o')
 ax_elbow.set_xlabel('Number of Clusters(k)')
 ax_elbow.set_ylabel('WCSS (Inertia)')
 ax_elbow.set_title("Elbow Method For Optimal k")
