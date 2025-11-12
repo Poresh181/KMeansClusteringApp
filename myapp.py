@@ -82,10 +82,14 @@ labels = model.labels_
 
 df_clustered = df.copy()
 df_clustered['Cluster'] = labels
+st.success("KMeans Clustering Complete!")
 
 #Show Dataset
 
-st.subheader("Final Dataset Preview")
+st.subheader("Dataset Preview After Training")
 st.write(df_clustered.head())
 
+
+st.subheader("Cluster Centers(Original Scale)")
+st.write(pd.DataFrame(model.cluster_centers_, columns = features))
 
