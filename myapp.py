@@ -75,4 +75,17 @@ st.pyplot(fig_elbow)
 
 
 st.subheader("KMeans Model Training")
-st.slider("Select number of clusters(k)", min_value=2, max_value=10, value =10, step=1)
+n_clusters = st.slider("Select number of clusters(k)", min_value=2, max_value=10, value =3, step=1)
+model = KMeans(n_clusters=n_clusters, random_state=42)
+model.fit(df)
+labels = model.labels_
+
+df_clustered = df.copy()
+df_clustered['Cluster'] = labels
+
+#Show Dataset
+
+st.subheader("Final Dataset Preview")
+st.write(df_clustered.head())
+
+
